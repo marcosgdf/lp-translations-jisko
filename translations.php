@@ -14,19 +14,21 @@ error_reporting(E_ALL);
 /**
  * Directory where .PO files are. WITH A TRAILING SLASH (/)
  **/
-define('PO_FILES', '/opt/lampp/htdocs/traducciones/po/');
+define('PO_FILES', '');
 
 /**
  * Directory where .MO files are. WITH A TRAILING SLASH (/)
  */
-define('MO_FILES', '/opt/lampp/htdocs/traducciones/mo/');
+define('MO_FILES', '');
 
 /**
  * Directory where the final result will be. WITH A TRAILING SLASH (/)
  */
-define('DEST_DIR', '/opt/lampp/htdocs/traducciones/final/');
+define('DEST_DIR', '');
 
-echo '<h1>PO FILES</h1>';
+echo '-----------------------'."\n".'
+PO FILES'."\n".'
+-----------------------'."\n";
 
 if (is_dir(PO_FILES))
 {
@@ -43,14 +45,16 @@ if (is_dir(PO_FILES))
 					mkdir(DEST_DIR.$language);
 				}
 				
-				echo 'Copy '.$file.' to '.DEST_DIR.$language.'/messages.po - ....<br /><br />';
+				echo 'Copying '.$file.' to '.DEST_DIR.$language.'/messages.po ...'."\n";
 				copy(PO_FILES.$file, DEST_DIR.$language.'/messages.po');
 			}
 		}
 	}
 }
 
-echo '<h1>MO FILES</h1>';
+echo '-----------------------'."\n".'
+MO FILES'."\n".'
+-----------------------'."\n";
 
 if (is_dir(MO_FILES))
 {
@@ -73,7 +77,7 @@ if (is_dir(MO_FILES))
 					
 						mkdir(DEST_DIR.$language.'/LC_MESSAGES');
 					
-						echo 'Copy '.$file.'.mo to '.DEST_DIR.$language.'/LC_MESSAGES/messages.mo - ....<br /><br />';
+						echo 'Copying '.$file.'.mo to '.DEST_DIR.$language.'/LC_MESSAGES/messages.mo ...'."\n\n";
 						copy(MO_FILES.$file.'/LC_MESSAGES/jisko.mo', DEST_DIR.$language.'/LC_MESSAGES/messages.mo');
 					}
 				}
